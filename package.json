@@ -1,0 +1,49 @@
+{
+  "name": "bagit-tbd",
+  "description": "tag it, bag it, dat it. send bag files super easy. 1. 2. 3.",
+  "version": "1.0.0",
+  "author": "Joe Hand <joe@hand.email>",
+  "bugs": {
+    "url": "https://github.com/joehand/bagit-tbd/issues"
+  },
+  "devDependencies": {
+    "browserify": "^14.3.0",
+    "concat-stream": "^1.6.0",
+    "envify": "^4.0.0",
+    "standard": "*",
+    "tap-spec": "^4.0.2",
+    "tape": "^4.0.0",
+    "watchify": "^3.9.0"
+  },
+  "homepage": "https://github.com/joehand/bagit-tbd",
+  "keywords": [],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joehand/bagit-tbd.git"
+  },
+  "scripts": {
+    "watch": "scripts/browserify.js watch",
+    "deps": "dependency-check . --entry ./app.js && dependency-check . --entry ./app.js --extra -i tachyons -i dat-colors --no-dev",
+    "start": "NODE_ENV=development electron ."
+  },
+  "dependencies": {
+    "bagit-fs": "^1.1.0",
+    "bagit-tools": "0.0.0",
+    "choo": "^5.1.4",
+    "choo-log": "^6.1.1",
+    "dat-node": "^2.0.0",
+    "electron": "^1.6.2",
+    "electron-default-menu": "^1.0.0",
+    "electron-window": "^0.8.1",
+    "envobj": "^1.0.3",
+    "explain-error": "^1.0.3",
+    "mirror-folder": "^1.2.2",
+    "sheetify": "^6.0.1",
+    "sheetify-nested": "^1.0.2",
+    "stream-each": "^1.2.0",
+    "tachyons": "^4.7.0",
+    "xtend": "^4.0.1"
+  }
+}
