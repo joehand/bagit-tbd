@@ -33,9 +33,11 @@ app.use(function (state, bus) {
   bus.on('drop', (dirname) => {
     switch (state.view) {
       case 'create':
-        return bus.emit('bag:create', dirname)
+        return bus.emit('create:start', dirname)
+      case 'send':
+        return bus.emit('send:start', dirname)
       case 'verify':
-        return bus.emit('bag:verify', dirname)
+        return bus.emit('verify:start', dirname)
     }
   })
 })

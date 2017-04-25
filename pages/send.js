@@ -17,9 +17,9 @@ function sendView (state, emit) {
     `
   }
   return html`
-    <div>
-      Share a Bag over Dat!
-      ${state.key ? 'dat://' + state.key : ''}
+    <div class="tc">
+      <h1>Share a Bag with Dat!</h1>
+      <p>${state.key ? 'dat://' + state.key : ''}</p>
     </div>
   `
 }
