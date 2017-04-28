@@ -11,7 +11,7 @@ function sendView (state, emit) {
           Drop a Bag Here to Send!
         </h1>
         <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
-          <a onclick=${function () {emit('send:start')}} href="#" class="link blue">(or open file dialog)</a>
+          <a onclick=${function () {emit('send:start')}} href="#" class="link blue">(or select a bag directory)</a>
         </h2>
       </div>
     `

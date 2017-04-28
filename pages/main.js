@@ -16,14 +16,14 @@ function mainView (state, emit) {
   console.log(state)
 
   return html`
-    <div class="pv5">
+    <div>
       ${Header({
         view: state.view,
         oncreate: () => emit('view:create'),
         onsend: () => emit('view:send'),
         onverify: () => emit('view:verify')
       })}
-      <div class="vh-75 dt w-100">
+      <div class="vh-100 dt w-100">
         ${view()}
       </div>
       <div>

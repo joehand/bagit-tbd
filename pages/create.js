@@ -13,7 +13,7 @@ function createView (state, emit) {
         Drop Files to Bag
       </h1>
       <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
-        <a onclick=${function () {emit('create:start')}} href="#" class="link blue">(or open file dialog)</a>
+        <a onclick=${function () {emit('create:start')}} href="#" class="link blue">(or select a directory)</a>
       </h2>
     </div>
   `

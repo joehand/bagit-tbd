@@ -34,25 +34,25 @@ function bagModel (state, bus) {
     var tests = verify(src)
     tests.on('data', function (data) {
       state.verify.results.push(data)
-      if (!data.ok) state.verify.failed = true
+      console.log(data)
+      console.log('ok', data.indexOf('not ok') > -1)
+      if (data.indexOf('not ok') > -1) state.verify.invalid = true
       bus.emit('render')
     })
     tests.on('verify', function (file) {
-      console.log('data', file)
       state.verify.todo = state.verify.todo - 1
       bus.emit('render')
     })
     tests.once('manifest-count', function (count) {
-      console.log(count)
       state.verify.manifests = count
       bus.emit('render')
     })
     tests.once('count', function (count) {
-      console.log(count)
-      state.verify.todo = count
+      state.verify.todo = count * state.verify.manifests
       bus.emit('render')
     })
     tests.on('end', function () {
+      console.log('state', state.verify)
       tests.removeAllListeners()
       state.verify.done = true
       bus.emit('render')

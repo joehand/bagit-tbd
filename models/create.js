@@ -5,16 +5,16 @@ const app = window.require('electron').remote.app
 const BagIt = require('bagit-fs')
 const mirror = require('mirror-folder')
 const xtend = require('xtend')
-const verify = require('bagit-tools').verify
 
 module.exports = bagModel
 
+// TODO: select download dir
 var bagDir = path.join(app.getPath('downloads'), '/bags')
 
 function bagModel (state, bus) {
   state.create = xtend({
     bagDir: bagDir,
-    name: 'my-bag-' + Date.now(),
+    name: 'my-bag-' + Date.now(), // todo: select name
     put: null,
     imported: []
   }, state.create)

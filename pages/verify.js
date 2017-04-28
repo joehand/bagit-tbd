@@ -11,27 +11,35 @@ function verifyView (state, emit) {
           Drop a Bag Here to Verify!
         </h1>
         <h2 class="f5 f4-m f3-l fw2 black-50 mt0 lh-copy">
-          <a onclick=${function () {emit('verify:start')}} href="#" class="link blue">(or open file dialog)</a>
+          <a onclick=${function () {emit('verify:start')}} href="#" class="link blue">(or select a bag directory)</a>
         </h2>
       </div>
     `
   }
 
+  var done = state.verify.done
+  var valid = done && !state.verify.invalid
+  var invalid = state.verify.invalid
+
+  var bkgColor = 'bg-washed-blue'
+  if (invalid) bkgColor = 'bg-light-red'
+  else if (valid) bkgColor = 'bg-light-green'
+
   return html`
-    <div class="cf ph2 ph5-ns pv5">
-      <header class="fn fl-ns w-35-ns pr5-ns">
-        <h2 class="f3 mid-gray lh-title">
+    <div class="vh-100 pv5">
+      <header class="vh-100 fn fl-ns w-35-ns ph4">
+        <h2 class="f4 mid-gray lh-title">
           Verifying Bag!
         </h2>
-        <time class="f6 ttu tracked gray">/${state.verify.name}</time>
-        <h4 class="f5">${state.verify.done
+        <time class="f6 ttu tracked gray">${state.verify.name}</time>
+      </header>
+      <div class="avenir fn fl-ns w-65-ns">
+        <h4 class="w-100 f5 tc ${bkgColor}">${state.verify.done
           ? state.verify.invalid
           ? 'INVALID BAG'
           : 'VALID BAG'
-            : 'TODO: ' + state.verify.todo
+            : `${state.verify.todo} hashes to check`
         }</h4>
-      </header>
-      <div class="avenir fn fl-ns w-65-ns">
         ${state.verify.results.map(result => {
           if (result.indexOf('TAP') > -1) return
           if (result[0] === '#') {
